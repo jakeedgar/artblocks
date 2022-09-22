@@ -1,0 +1,31 @@
+// SPDX-License-Identifier: Apache-2.0
+pragma solidity ^0.8.0;
+
+import "@thirdweb-dev/contracts/base/ERC721Drop.sol";
+
+contract MyGenerativeArt is ERC721Drop {
+    string public script;
+
+    function setScript(string calldata _script) public onlyOwner {
+        script = _script;
+    }
+
+    constructor(
+        string memory _name,
+        string memory _symbol,
+        address _royaltyRecipient,
+        uint128 _royaltyBps,
+        address _primarySaleRecipient,
+        string memory _script
+    )
+        ERC721Drop(
+            _name,
+            _symbol,
+            _royaltyRecipient,
+            _royaltyBps,
+            _primarySaleRecipient
+        )
+    {
+        script = _script;
+    }
+}
